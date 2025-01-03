@@ -17,7 +17,7 @@ if uploaded_image is not None:
     st.image(image)
     file_bytes = np.asarray(bytearray(uploaded_image.read()), dtype=np.uint8)
     img = cv2.imdecode(file_bytes, cv2.IMREAD_COLOR)
-    img = img * 1.0 / 255
+    img = img.astype(np.float32) * 1.0 / 255.0
     img = torch.from_numpy(np.transpose(img[:, :, [2, 1, 0]], (2, 0, 1))).float()
     img_LR = img.unsqueeze(0)
     img_LR = img_LR.to(device)
