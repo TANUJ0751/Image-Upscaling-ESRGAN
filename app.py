@@ -16,7 +16,7 @@ if uploaded_image is not None:
     image=Image.open(uploaded_image)
     st.image(image)
     file_bytes = np.asarray(bytearray(uploaded_image.read()), dtype=np.uint8)
-    img = cv2.imread(file_bytes, cv2.IMREAD_COLOR)
+    img = cv2.imread(uploaded_image, cv2.IMREAD_COLOR)
     img = img * 1.0 / 255
     img = torch.from_numpy(np.transpose(img[:, :, [2, 1, 0]], (2, 0, 1))).float()
     img_LR = img.unsqueeze(0)
