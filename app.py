@@ -55,8 +55,8 @@ if uploaded_file is not None:
     upscaled_image = upscale_image(uploaded_file, model, device)
 
     # Display results
-    st.image(uploaded_file, caption="Original Image", use_column_width=True)
-    st.image(upscaled_image, caption="Upscaled Image", use_column_width=True)
+    st.image(uploaded_file, caption="Original Image", use_container_width=True)
+    st.image(upscaled_image, caption="Upscaled Image", use_container_width=True)
 
     # Option to download the upscaled image
     output_path = Path("upscaled_image.png")
